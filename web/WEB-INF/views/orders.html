@@ -69,6 +69,7 @@
                     <thead>
                     <tr>
                         <th>Waiter</th>
+                        <th>Table</th>
                         <th>Time remaining</th>
                         <th>Status</th>
                         <th></th>
@@ -77,11 +78,40 @@
                     <tbody>
                     <tr class = "order" ng-repeat="order in orders">
                         <td>{{order.waiter.firstName}} {{order.waiter.lastName}}</td>
-                        <td>{{order.remainingTime}}</td>
-                        <td>{{order.status}}</td>
+                        <td>{{order.table}}</td>
                         <td>
-                            <button type="button" class="btn btn btn-default">
-                                <span class="glyphicon glyphicon-ok">Take order</span>
+                            <div ng-switch="{{order.remainingTime}}" style="margin-bottom: -42px;">
+                                <div class="alert alert-danger" ng-switch-when="0">
+                                    0:00
+                                </div>
+                                <div ng-switch-default>
+                                    {{order.time}}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-switch="{{order.status}}" style="margin-bottom: -42px;">
+                                <div class="alert alert-warning" ng-switch-when="0">
+                                    <span class="glyphicon glyphicon-unchecked"
+                                    translate="orders.table.messages.waiting">Waiting</span>
+                                </div>
+                                <div class="alert alert-info" ng-switch-when="1">
+                                    <span class="glyphicon glyphicon-circle-arrow-right"
+                                    translate="orders.table.messages.taken">Taken</span>
+                                </div>
+                                <div class="alert alert-success" ng-switch-when="2">
+                                    <span class="glyphicon glyphicon-ok-sign"
+                                    translate="orders.table.messages.finished">Finished</span>
+                                </div>
+                                <div class="alert alert-danger" ng-switch-when="3">
+                                    <span class="glyphicon glyphicon-time"
+                                    translate="orders.table.messages.overdue">Overdue</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-chevron-right"></span> Take order
                             </button>
                         </td>
                     </tr>

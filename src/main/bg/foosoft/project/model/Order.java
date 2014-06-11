@@ -18,13 +18,12 @@ import java.util.List;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class Order {
 
-    @JsonIgnore
+    private static final int STATUS_WAITING = 0;
+    private static final int STATUS_TAKEN = 1;
+    private static final int STATUS_FINISHED = 2;
+    private static final int STATUS_OVERDUE = 3;
     private static final int ONE_SECOND = 1000;
-
-    @JsonIgnore
     private static final int ONE_MINUTE = 60 * ONE_SECOND;
-
-    @JsonIgnore
     private static final int FIVE_MINUTES = 5 * ONE_MINUTE;
 
     @Id
@@ -40,7 +39,7 @@ public class Order {
     private Date mTakenDate;
 
     @Property("status")
-    private String mStatus = "waiting";
+    private int mStatus = STATUS_WAITING;
 
     @Embedded("items")
     private List<MenuItem> mItems;
@@ -51,16 +50,30 @@ public class Order {
     @JsonIgnore
     private Long mDeadline;
 
-    public String getRemainingTime(){
+    private boolean mExpired;
+
+    public Long getRemainingTime(){
+        /*
+        mExpired = false;
+
         Long now = System.currentTimeMillis();
         Long remaining = mDeadline - now;
         if(remaining <= 0){
-            return "0:00";
+            mExpired = true;
+            return "0";
         }
         Long minutes = remaining / ONE_MINUTE;
         Long seconds = (remaining % ONE_MINUTE) / ONE_SECOND;
         //String minutes = mins.toString();
-        return minutes.toString() + ":" + seconds.toString();
+        return minutes.toString() + ":" + seconds.toString();*/
+        Long now = System.currentTimeMillis();
+        Long remaining = mDeadline - now;
+
+        if(remaining <= 0) {
+            return 0l;
+        }
+
+        return remaining / ONE_SECOND;
     }
 
     //huehuehuehuehuehuehuehue
@@ -76,6 +89,14 @@ public class Order {
         } else {
             throw new NullPointerException("List of items is null");
         }
+    }
+
+    public boolean isExpired() {
+        return mExpired;
+    }
+
+    public void setExpired(boolean mExpired) {
+        this.mExpired = mExpired;
     }
 
     public String getId() {
@@ -134,11 +155,11 @@ public class Order {
         mItems = items;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return mStatus;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         mStatus = status;
     }
 

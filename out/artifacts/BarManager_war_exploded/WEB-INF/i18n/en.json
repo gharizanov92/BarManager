@@ -143,6 +143,16 @@
             "success": "<strong>Password changed!</strong>"
         }
     },
+    "orders": {
+        "table": {
+            "messages": {
+                "waiting": "waiting",
+                "taken": "taken",
+                "finished": "finished",
+                "overdue": "overdue"
+            }
+        }
+    },
     "errors": {
         "title": "Error page!",
         "403": "You are not authorized to access the page."

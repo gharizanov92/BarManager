@@ -6,30 +6,39 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         $scope.orders = resolvedOrders;
         $scope.items = Items.all();
 
-        var orders = console.log($scope.orders);
+        var formatTime = function(time){
+            var minutes = time / 60;
+            var seconds = time % 60;
+            if(seconds < 10){
+                seconds = "0" + seconds;
+            } else {
+                seconds = "" + seconds;
+            }
+            return minutes + ":" + seconds;
+        };
 
         var updateOrders = function() {
             $timeout(function() {
                 Orders.all(function(newOrders){
+
+                    for(var i = 0; i < newOrders.length; i++){
+                        console.log(newOrders[i].id);
+                        for(var j = 0; j < $scope.orders.length; j++){
+                            if($scope.orders[j].id != newOrders[i].id){
+                                $scope.orders = newOrders;
+                            }
+                        }
+                    }
+
                     for(var i = 0; i < newOrders.length; i++){
                         $scope.orders[i].remainingTime = newOrders[i].remainingTime;
+                        $scope.orders[i].time = formatTime(newOrders[i].remainingTime);
                     }
                 });
                 updateOrders();
             }, 1000);
         };
         updateOrders();
-        /*
-        function updateOrders() {
-            Orders.all(function(newOrders){
-                console.log(newOrders);
-                for(var i = 0; i < newOrders.length; i++){
-                    console.log($scope.orders[i].remainingTime)
-                    $scope.orders[i].remainingTime = newOrders[i].remainingTime;
-                }
-            });
-        }
-        setInterval(updateOrders, 1000);*/
 
         $scope.create = function () {
             console.log("test");
