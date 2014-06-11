@@ -1,0 +1,93 @@
+<div ng-switch="authenticated">
+    <div ng-switch-when="true">
+        <h2>Orders</h2>
+        <div ng-show="isAuthorized(userRoles.waiter)">
+            <form name="form" role="form" novalidate
+                  class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                  ng-submit="create()">
+
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ok"></span> Make order
+                        </button>
+                    </span>
+                    <input type="text" class="form-control" ng-model="table"/>
+                </div>
+
+                <br/>
+
+                <h3>
+                    <span class="glyphicon glyphicon-list"> Menu</span>
+                </h3>
+
+                <hr/>
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Label</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class = "item" ng-repeat="item in items">
+                                <td>{{item.id}}</td>
+                                <td>{{item.label}}</td>
+                                <td>{{item.price}}</td>
+                                <td>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn btn-default">
+                                                <span class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </span>
+                                        <input type="tel" class="quantity form-control" value="0">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn btn-default">
+                                                <span class="glyphicon glyphicon-minus"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+
+        <hr/>
+
+        <div ng-show="isAuthorized(userRoles.bartender)">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Waiter</th>
+                        <th>Time remaining</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class = "order" ng-repeat="order in orders">
+                        <td>{{order.waiter.firstName}} {{order.waiter.lastName}}</td>
+                        <td>{{order.remainingTime}}</td>
+                        <td>{{order.status}}</td>
+                        <td>
+                            <button type="button" class="btn btn btn-default">
+                                <span class="glyphicon glyphicon-ok">Take order</span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

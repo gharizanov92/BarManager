@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BarManager:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BarManager_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="BarManager/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BarManager" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="aspectjrt-1.5.3" />
+          <element id="library" level="project" name="commons" />
+          <element id="library" level="project" name="jackson" />
+          <element id="library" level="project" name="javassist-3.16.1" />
+          <element id="library" level="project" name="junit" />
+          <element id="library" level="project" name="logging" />
+          <element id="library" level="project" name="mongo" />
+          <element id="library" level="project" name="servlet" />
+          <element id="library" level="project" name="spring-4.0.5" />
+          <element id="library" level="project" name="aopalliance-1.0" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

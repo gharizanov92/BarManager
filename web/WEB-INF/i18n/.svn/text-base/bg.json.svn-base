@@ -1,0 +1,134 @@
+{
+    "global": {
+        "title": "Bar Manager",
+        "browsehappy": "Вие използвате <strong>стар</strong> браъзер. Моля <a href=\"http://browsehappy.com/?locale=en\">обновете башия браузер</a>.",
+        "menu": {
+            "home": "Начало",
+            "account": {
+                "main": "Профил",
+                "settings": "Настройки",
+                "password": "Парола",
+                "sessions": "Сесии",
+                "tracker": "Трекер польз.",
+                "metrics": "Метрики",
+                "logs": "Логи",
+                "audits": "Аудит",
+                "login": "Вход",
+                "logout": "Изход",
+                "apidocs": "API",
+                "register": "Register"
+            },
+            "items":"Меню",
+            "orders":"Поръчки",
+            "report":"Отчети",
+            "users":"Потребители",
+            "language": "Език"
+        },
+        "language": {
+            "en": "Английский",
+            "bg": "Български"
+        },
+        "form": {
+            "username": "Логин",
+            "username.placeholder": "Логин",
+            "newpassword": "Парола",
+            "newpassword.placeholder": "Вашата парола",
+            "confirmpassword": "Потвърждаване на паролата",
+            "confirmpassword.placeholder": "Потвърдете паролата",
+            "email": "Имейл",
+            "email.placeholder": "Вашият имейл",
+            "role":"Роля",
+            "roles":{
+                "bartender":"Барман",
+                "waiter":"Сервитьор"
+            }
+        },
+        "messages": {
+            "validate": {
+                "newpassword": {
+                    "required": "Нужно е да въведета парола",
+                    "minlength": "Минималната дължина на паролата е 5 символа",
+                    "maxlength": "Паролата не може да е по-дълга от 50 символа"
+                },
+                "confirmpassword": {
+                    "required": "Необходимо е да потвърдите паролата",
+                    "minlength": "Минималната дължина на паролата е 5 символа",
+                    "maxlength": "Паролата не може да е по-дълга от 50 символа"
+                }
+            }
+        }
+    },
+    "main": {
+        "title": "Добре дошли в най-добрата система за управление на барове!",
+        "subtitle": "Това е вашата начална страница",
+        "logged": {
+            "message": "Вие сте се влезли в системата като потребител \"{{username}}\"."
+        }
+    },
+    "register": {
+        "title": "Registration",
+        "form": {
+            "button": "Register"
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Your login is required.",
+                    "minlength": "Your login is required to be at least 1 character",
+                    "maxlength": "Your login cannot be longer than 50 characters"
+                }
+            },
+            "success": "<strong>Registration saved!</strong> Please check your email for confirmation.",
+            "error": {
+                "fail": "<strong>Registration failed!</strong> Please try again later.",
+                "userexists": "<strong>Login name already registered!</strong> Please choose another one."
+            }
+        }
+    },
+    "login": {
+        "title": "Автентикация",
+        "form": {
+            "password": "Парола",
+            "password.placeholder": "Вашата парола",
+            "button": "Вход"
+        },
+        "messages": {
+            "error": {
+                "authentication": "<strong>Неуспешна автентикация!</strong> Моля проверете потребителското име и паролата и опитайте отново."
+            }
+        }
+    },
+    "settings": {
+        "title": "Настройки на потребителя [<b>{{username}}</b>]",
+        "messages": {
+            "error": "<strong>Възника грешка!</strong> Настройките не са запазени успешно.",
+            "success": "<strong>Настройките са запазени успешно!</strong>",
+            "validate": {
+                "firstname": {
+                    "required": "Необходимо е да въведете име.",
+                    "minlength": "Минималната дължина на името е 1 символ",
+                    "maxlength": "Максималната дължина на името е 50 символа"
+                },
+                "lastname": {
+                    "required": "Необходимо е да въведете фамилия",
+                    "minlength": "Минималната дължина на фамилията е 1 символ",
+                    "maxlength": "Максималната дължина на фамилията е 50 символа"
+                }
+            }
+        }
+    },
+    "password": {
+        "title": "Парола за потребител [<b>{{username}}</b>]",
+        "form": {
+            "button": "Запази"
+        },
+        "messages": {
+            "error": "<strong>Възникна грешка!</strong> Паролата не е променена.",
+            "success": "<strong>Паролата е променена успешно!</strong>"
+        }
+    },
+    "errors": {
+        "title": "Грешка!",
+        "403": "Не сте авторизирани!"
+    }
+}

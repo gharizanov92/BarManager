@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/bg/foosoft/project/locale/AngularCookieLocaleResolver.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/bg/foosoft/project/locale/package-info.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/css/angular-csp.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/css/bootstrap.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/css/documentation.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/css/famfamfam-flags.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/css/main.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/i18n" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/images/development_ribbon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/images/famfamfam-flags.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/images/glyphicons-halflings-white.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/images/glyphicons-halflings.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/angular-i18n" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/controllers.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/directives.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/http-auth-interceptor.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/items/items_controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/items/items_router.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/items/items_service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-cookies" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-dynamic-locale" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-mocks" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-resource" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-route" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-sanitize" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-scenario" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-translate" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-translate-loader-static-files" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/angular-translate-storage-cookie" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/atmosphere" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/bootstrap-sass" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/jquery" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/jquery-atmosphere" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/json3" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/modernizr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/sizzle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/lib/swagger-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/services.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/truncate.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/users" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/js/utils.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/protected" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/audits.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/docs.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/error.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/items.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/logs.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/metrics.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/password.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/register.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/sessions.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/settings.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/WEB-INF/views/users.html" charset="UTF-8" />
+  </component>
+</project>
+

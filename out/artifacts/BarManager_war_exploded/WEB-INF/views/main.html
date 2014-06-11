@@ -1,0 +1,16 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-8">
+            <h1 translate="main.title">Welcome to Bar manager!</h1>
+            <p class="lead" translate="main.subtitle"></p>
+
+            <div ng-switch="authenticated">
+                <div class="alert alert-success" ng-switch-when="true"
+                     translate="main.logged.message" translate-values="{username: '{{account.username}}'}">
+                    You are logged in as user "Admin".
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

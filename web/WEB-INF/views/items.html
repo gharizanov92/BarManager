@@ -1,0 +1,129 @@
+
+<div>
+
+    <h2>Items</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#addItemModal" ng-click="clear()">
+        </span> Add a new item
+    </button>
+    <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="addItemLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="form" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="global.form.items.modal-header">Add or edit an item</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label translate="global.form.label">Item label</label>
+                            <input type="text" class="form-control" placeholder="{{'global.form.items.label.placeholder' | translate}}"
+                                   name = "label" ng-model="item.label" ng-minlength=1 ng-maxlength=50 required>
+                            <div class="error"
+                                 ng-show="form.label.$dirty && form.label.$invalid">
+                                <small class="error"
+                                       ng-show="form.label.$error.required" translate="items.messages.validate.label.required">
+                                    An item label is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="form.label.$error.minlength" translate="items.messages.validate.label.minlength">
+                                    Your item label is required to be at least 1 character
+                                </small>
+                                <small class="error"
+                                       ng-show="form.label.$error.maxlength" translate="items.messages.validate.label.maxlength">
+                                    Your item label cannot be longer than 50 characters
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label translate="global.form.price">Price</label>
+                            <input type="number" class="form-control" placeholder="{{'global.form.price.placeholder' | translate}}"
+                                   name="price" ng-model="item.price" required>
+                            <div class="error"
+                                 ng-show="form.password.$dirty && form.password.$invalid">
+                                <small class="error"
+                                       ng-show="form.price.$error.required" translate="items.messages.validate.price.required">
+                                    Your password is required.
+                                </small>
+                                <small class="error"
+                                       ng-show="form.price.$error.minlength" translate="items.messages.validate.price.minlength">
+                                    Your password is required to be at least 5 characters
+                                </small>
+                                <small class="error"
+                                       ng-show="form.price.$error.maxlength" translate="items.messages.validate.price.maxlength">
+                                    Your password cannot be longer than 50 characters
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span><span translate="register.form.button">Save</span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <ul class="items-list">
+        <li class="items-entity" ng-repeat="item in items">
+            <ul>
+                <li><strong>{{item.label}} </strong>
+                <li><img class="menu-img" src="/images/menu/coffee.jpg"/></li>
+                <li><span translate = "items.table.price"/>{{item.price}}</li>
+                <li>
+                    <button type="submit"
+                            ng-click="update(item.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <button type="submit"
+                            ng-click="delete(item.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+<!--
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="items.table.label">Label</span></th>
+                    <th><span translate="items.table.price">Price</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.label}}</td>
+                    <td>{{item.price}}</td>
+                    <td>
+                        <button type="submit"
+                                ng-click="update(item.id)"
+                                class="btn">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(item.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    -->
+</div>
