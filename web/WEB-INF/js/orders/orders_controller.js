@@ -5,7 +5,6 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
 
         $scope.orders = resolvedOrders;
         $scope.takenOrder = Orders.takenOrder(function(result){
-            console.log("taken order: ");
             console.log(result);
         });
         $scope.items = Items.all();
@@ -42,12 +41,7 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         };
         updateOrders();
 
-        $scope.hasOrder = function(){
-            return false;
-        };
-
         $scope.create = function () {
-            console.log("test");
             var orders = [];
 
             Orders.save({"table":$scope.table, "items":$scope.items},
@@ -59,12 +53,25 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         };
 
         $scope.hasTakenOrder = function () {
+            console.log("id" in $scope.takenOrder);
+            return "id" in $scope.takenOrder;
+        /*
             console.log($scope.takenOrder);
-            return $scope.takenOrder != null;
+            console.log($scope.takenOrder.id != "");
+            return $scope.takenOrder != "";*/
+            return true;
         };
 
         $scope.takeOrder = function (id) {
             $.post("/rest/orders/take_order/" + id);
+        };
+
+        $scope.cancelOrder = function(id){
+            $.post("/rest/orders/cancel_order/" + id);
+        };
+
+        $scope.completeOrder = function(id){
+            $.post("/rest/orders/complete_order/" + id);
         };
 
         $scope.update = function (id) {

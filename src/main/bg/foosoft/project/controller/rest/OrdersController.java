@@ -2,8 +2,10 @@ package bg.foosoft.project.controller.rest;
 
 import bg.foosoft.project.controller.rest.body.OrderRequestBody;
 import bg.foosoft.project.dao.OrdersDAO;
+import bg.foosoft.project.dao.UserDAO;
 import bg.foosoft.project.model.Order;
 import bg.foosoft.project.model.User;
+import bg.foosoft.project.util.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,13 @@ import java.util.List;
 public class OrdersController {
 
     @Autowired
+    private UserInfo mUserInfo;
+
+    @Autowired
     private OrdersDAO mOrdersDAO;
+
+    @Autowired
+    private UserDAO mUserDAO;
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> addItem(@RequestBody OrderRequestBody aOrder) {
@@ -56,6 +64,13 @@ public class OrdersController {
         return order;
     }
 
+    @RequestMapping(value = "/cancel_order/{id}",
+            method = RequestMethod.POST,
+            produces = "application/json")
+    public ResponseEntity<String> cancelOrder(@PathVariable String id){
+        mUserDAO.cancelOrder(mUserInfo.getId(), id);
+        return new ResponseEntity<String>(HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/take_order/{id}",
             method = RequestMethod.POST,

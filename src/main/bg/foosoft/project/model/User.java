@@ -42,7 +42,7 @@ public class User implements Comparable<User> {
     private String mRole;
 
     @Embedded("order")
-    private String mTakenOrder;
+    private String mTakenOrder = "";
 
     public String getRoleLabel(){
         if(getRole() == null){

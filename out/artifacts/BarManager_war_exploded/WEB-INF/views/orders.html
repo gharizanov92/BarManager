@@ -147,10 +147,10 @@
             </table>
         </div>
         <div>
-            <button type="button" class="btn btn-default">
+            <button type="button" class="btn btn-default" ng-click="cancelOrder(takenOrder.id)">
                 <span class="glyphicon glyphicon-ban-circle"></span> Abandon order
             </button>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" ng-click="completeOrder(takenOrder.id)">
                 <span class="glyphicon glyphicon-ok"></span> Complete order
             </button>
         </div>

@@ -3,6 +3,7 @@ package bg.foosoft.project.controller.rest;
 import bg.foosoft.project.dao.UserDAO;
 import bg.foosoft.project.model.User;
 import bg.foosoft.project.util.Urls;
+import bg.foosoft.project.util.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,4 +76,5 @@ public class UsersController {
     public void setUserDAO(UserDAO aUserDAO) {
         mUserDAO = aUserDAO;
     }
+
 }

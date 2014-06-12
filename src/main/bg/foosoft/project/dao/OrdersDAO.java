@@ -105,9 +105,9 @@ public class OrdersDAO extends BasicDAO<Order, String> {
 
     public boolean updateOrderStatus(String id, Integer status){
 
-        if(status != Order.STATUS_OVERDUE ||
-                status != Order.STATUS_TAKEN ||
-                status != Order.STATUS_FINISHED ||
+        if(status != Order.STATUS_OVERDUE &&
+                status != Order.STATUS_TAKEN &&
+                status != Order.STATUS_FINISHED &&
                 status != Order.STATUS_WAITING){
             return false;
         }
@@ -147,7 +147,7 @@ public class OrdersDAO extends BasicDAO<Order, String> {
 
     public Order getTakenOrder() {
         String orderID = mUserDAO.findUserByID(mUserInfo.getId()).getTakenOrder();
-        if(orderID == null){
+        if(orderID == ""){
             return null;
         }
         Order result = ds.get(Order.class, orderID);

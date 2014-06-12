@@ -26,7 +26,7 @@ public class UserDAO extends BasicDAO<User, String> {
     public static String PASSWORD = "manager";
 
     @Autowired
-    private UserInfo userInfo;
+    private OrdersDAO mOrderDAO;
 
     public UserDAO(Mongo mongo, Morphia morphia, String dbName) {
         super(mongo, morphia, dbName);
@@ -126,12 +126,20 @@ public class UserDAO extends BasicDAO<User, String> {
         registerUser(manager);
     }
 
-    public void takeOrder(String id, String orderID){
-
-        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(id);
+    public void takeOrder(String userID, String orderID){
+        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(userID);
         UpdateOperations<User> ops = null;
         ops = ds.createUpdateOperations(User.class).set("order", orderID);
         ds.update(updateQuery, ops);
+    }
+
+    public void cancelOrder(String userID, String orderID){
+        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(userID);
+        UpdateOperations<User> ops = null;
+        ops = ds.createUpdateOperations(User.class).set("order", "");
+        ds.update(updateQuery, ops);
+
+        mOrderDAO.updateOrderStatus(orderID, Order.STATUS_WAITING);
     }
 
     public void removeUser(String id) {
