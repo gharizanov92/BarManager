@@ -75,6 +75,11 @@ public class ItemsDAO extends BasicDAO<MenuItem, String> {
 
         try {
             result = ds.find(MenuItem.class).asList();
+
+            for(MenuItem item : result){
+                item.setQuantity(0);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;

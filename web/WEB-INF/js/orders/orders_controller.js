@@ -1,13 +1,17 @@
 'use strict';
 
-app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items', '$timeout',
-    function ($scope, resolvedOrders, Orders, Items, $timeout) {
+app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items', '$timeout', "$rootScope",
+    function ($scope, resolvedOrders, Orders, Items, $timeout, $rootScope) {
 
         $scope.orders = resolvedOrders;
+        $scope.takenOrder = Orders.takenOrder(function(result){
+            console.log("taken order: ");
+            console.log(result);
+        });
         $scope.items = Items.all();
 
         var formatTime = function(time){
-            var minutes = time / 60;
+            var minutes = Math.floor(time / 60);
             var seconds = time % 60;
             if(seconds < 10){
                 seconds = "0" + seconds;
@@ -20,9 +24,7 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         var updateOrders = function() {
             $timeout(function() {
                 Orders.all(function(newOrders){
-
                     for(var i = 0; i < newOrders.length; i++){
-                        console.log(newOrders[i].id);
                         for(var j = 0; j < $scope.orders.length; j++){
                             if($scope.orders[j].id != newOrders[i].id){
                                 $scope.orders = newOrders;
@@ -40,23 +42,29 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         };
         updateOrders();
 
+        $scope.hasOrder = function(){
+            return false;
+        };
+
         $scope.create = function () {
             console.log("test");
             var orders = [];
-            $(".item").each(function(index){
-                var numberOfOrders = $(this).find("input").val();
-                for(var i = 0; i < numberOfOrders ; i++){
-                    orders.push($(this).find("td").first().text().trim());
-                }
-            });
-            console.log(orders);
 
-            Orders.save({"table":$scope.table, "items":orders},
+            Orders.save({"table":$scope.table, "items":$scope.items},
                 function () {
                     $scope.orderss = Orders.all();
                     $('#saveOrdersModal').modal('hide');
                     $scope.clear();
                 });
+        };
+
+        $scope.hasTakenOrder = function () {
+            console.log($scope.takenOrder);
+            return $scope.takenOrder != null;
+        };
+
+        $scope.takeOrder = function (id) {
+            $.post("/rest/orders/take_order/" + id);
         };
 
         $scope.update = function (id) {

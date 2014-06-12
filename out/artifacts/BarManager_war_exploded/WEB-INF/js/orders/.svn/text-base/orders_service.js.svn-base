@@ -2,8 +2,9 @@
 
 app.factory('Orders', ['$resource',
     function ($resource) {
-        return $resource('/rest/orders/:id', {}, {
-            'all': { method: 'GET', isArray: true},
-            'get': { method: 'GET'}
+        return $resource('/rest/orders/:dest/:id', {}, {
+            'all': { method: 'GET', params: {dest:"all"},isArray: true},
+            'take': { method: 'POST', params: {dest:"take_order"}},
+            'get': { method: 'GET', params: {dest:"order"}}
         });
     }]);

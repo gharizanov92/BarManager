@@ -1,5 +1,6 @@
 package bg.foosoft.project.dao;
 
+import bg.foosoft.project.model.Order;
 import bg.foosoft.project.model.User;
 import bg.foosoft.project.util.PasswordHash;
 import bg.foosoft.project.util.Roles;
@@ -123,6 +124,14 @@ public class UserDAO extends BasicDAO<User, String> {
         }
 
         registerUser(manager);
+    }
+
+    public void takeOrder(String id, String orderID){
+
+        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(id);
+        UpdateOperations<User> ops = null;
+        ops = ds.createUpdateOperations(User.class).set("order", orderID);
+        ds.update(updateQuery, ops);
     }
 
     public void removeUser(String id) {

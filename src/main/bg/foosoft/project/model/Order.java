@@ -18,10 +18,10 @@ import java.util.List;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class Order {
 
-    private static final int STATUS_WAITING = 0;
-    private static final int STATUS_TAKEN = 1;
-    private static final int STATUS_FINISHED = 2;
-    private static final int STATUS_OVERDUE = 3;
+    public static final int STATUS_WAITING = 0;
+    public static final int STATUS_TAKEN = 1;
+    public static final int STATUS_FINISHED = 2;
+    public static final int STATUS_OVERDUE = 3;
     private static final int ONE_SECOND = 1000;
     private static final int ONE_MINUTE = 60 * ONE_SECOND;
     private static final int FIVE_MINUTES = 5 * ONE_MINUTE;
@@ -44,13 +44,11 @@ public class Order {
     @Embedded("items")
     private List<MenuItem> mItems;
 
-    @JsonIgnore
+    @Property("timeAdded")
     private Long mTimeAdded;
 
-    @JsonIgnore
+    @Property("deadline")
     private Long mDeadline;
-
-    private boolean mExpired;
 
     public Long getRemainingTime(){
         /*
@@ -79,7 +77,7 @@ public class Order {
     //huehuehuehuehuehuehuehue
     public Order() {
         mTimeAdded = System.currentTimeMillis();
-        mDeadline = mTimeAdded + FIVE_MINUTES;
+        updateDeadline();
         mItems = new LinkedList<MenuItem>();
     }
 
@@ -92,11 +90,9 @@ public class Order {
     }
 
     public boolean isExpired() {
-        return mExpired;
-    }
+        Long now = System.currentTimeMillis();
 
-    public void setExpired(boolean mExpired) {
-        this.mExpired = mExpired;
+        return mDeadline <= now;
     }
 
     public String getId() {
@@ -143,6 +139,11 @@ public class Order {
         return mDeadline;
     }
 
+    public void updateDeadline(){
+        Long now = System.currentTimeMillis();
+        mDeadline = now + FIVE_MINUTES;
+    }
+
     public void setDeadline(Long deadline) {
         mDeadline = deadline;
     }
@@ -160,6 +161,9 @@ public class Order {
     }
 
     public void setStatus(Integer status) {
+        if(status == STATUS_TAKEN){
+            Long now = System.currentTimeMillis();
+        }
         mStatus = status;
     }
 

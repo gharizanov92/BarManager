@@ -1,5 +1,7 @@
 package bg.foosoft.project.controller.rest.body;
 
+import bg.foosoft.project.model.MenuItem;
+
 import java.util.List;
 
 /**
@@ -8,7 +10,7 @@ import java.util.List;
 public class OrderRequestBody {
 
     private String mTable;
-    private List<String> mItems;
+    private List<MenuItem> mItems;
 
     public OrderRequestBody() {
     }
@@ -21,11 +23,11 @@ public class OrderRequestBody {
         mTable = table;
     }
 
-    public List<String> getItems() {
+    public List<MenuItem> getItems() {
         return mItems;
     }
 
-    public void setItems(List<String> orders) {
+    public void setItems(List<MenuItem> orders) {
         mItems = orders;
     }
 }

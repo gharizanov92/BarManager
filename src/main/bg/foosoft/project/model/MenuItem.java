@@ -21,6 +21,9 @@ public class MenuItem {
     @Property("price")
     private Double mPrice;
 
+    //for making orders
+    private Integer quantity;
+
     public MenuItem() {
     }
 
@@ -48,4 +51,11 @@ public class MenuItem {
         mPrice = price;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 }

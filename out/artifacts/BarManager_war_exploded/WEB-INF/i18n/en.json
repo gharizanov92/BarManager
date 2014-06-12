@@ -146,10 +146,10 @@
     "orders": {
         "table": {
             "messages": {
-                "waiting": "waiting",
-                "taken": "taken",
-                "finished": "finished",
-                "overdue": "overdue"
+                "waiting": " Waiting",
+                "taken": " Taken",
+                "finished": " Finished",
+                "overdue": " Overdue"
             }
         }
     },

@@ -1,6 +1,7 @@
 package bg.foosoft.project.model;
 
 import bg.foosoft.project.util.Roles;
+import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Property;
@@ -39,6 +40,9 @@ public class User implements Comparable<User> {
 
     @Property("role")
     private String mRole;
+
+    @Embedded("order")
+    private String mTakenOrder;
 
     public String getRoleLabel(){
         if(getRole() == null){
@@ -127,6 +131,14 @@ public class User implements Comparable<User> {
 
     public void setEmail(String email) {
         mEmail = email;
+    }
+
+    public String getTakenOrder() {
+        return mTakenOrder;
+    }
+
+    public void setTakenOrder(String takenOrder) {
+        mTakenOrder = takenOrder;
     }
 
     @Override
