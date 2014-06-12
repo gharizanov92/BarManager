@@ -1,5 +1,5 @@
 <div ng-switch="authenticated">
-    <div ng-hide="hasTakenOrder()">
+    <div ng-hide="hasTakenOrder">
         <div ng-switch-when="true">
             <h2>Orders</h2>
             <div ng-show="isAuthorized(userRoles.waiter)">
@@ -13,7 +13,7 @@
                                 <span class="glyphicon glyphicon-ok"></span> Make order
                             </button>
                         </span>
-                        <input type="text" class="form-control" ng-model="table"/>
+                        <input type="text" class="form-control" ng-model="searchText"/>
                     </div>
 
                     <br/>
@@ -36,7 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class = "item" ng-repeat="item in items">
+                                <tr class = "item" ng-repeat="item in items | filter:searchText">
                                     <td>{{item.id}}</td>
                                     <td>{{item.label}}</td>
                                     <td>{{item.price}}</td>
@@ -64,7 +64,7 @@
 
             <hr/>
 
-            <div ng-show="isAuthorized(userRoles.bartender) && !hasTakenOrder()">
+            <div ng-show="isAuthorized(userRoles.bartender)">
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -123,7 +123,7 @@
         </div>
     </div>
 
-    <div ng-show="hasTakenOrder()">
+    <div ng-show="hasTakenOrder">
 
         <h3> Order {{takenOrder.id}} by waiter {{takenOrder.waiter.firstName}} {{takenOrder.waiter.lastName}} </h3>
         <div class="table-responsive">

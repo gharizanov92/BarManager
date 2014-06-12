@@ -32,9 +32,6 @@ public class Order {
     @Embedded("waiter")
     private User mWaiter;
 
-    @Property("table")
-    private String mTable;
-
     @Property("date_taken")
     private Date mTakenDate;
 
@@ -109,14 +106,6 @@ public class Order {
 
     public void setWaiter(User waiter) {
         mWaiter = waiter;
-    }
-
-    public String getTable() {
-        return mTable;
-    }
-
-    public void setTable(String table) {
-        mTable = table;
     }
 
     public Date getTakenDate() {

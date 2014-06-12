@@ -35,7 +35,7 @@ public class OrdersController {
     public ResponseEntity<String> addItem(@RequestBody OrderRequestBody aOrder) {
 
 
-        if (mOrdersDAO.addOrder(aOrder.getTable(), aOrder.getItems())) {
+        if (mOrdersDAO.addOrder(aOrder.getItems())) {
             return new ResponseEntity<String>(HttpStatus.OK);
         }
 
@@ -75,7 +75,8 @@ public class OrdersController {
     @RequestMapping(value = "/take_order/{id}",
             method = RequestMethod.POST,
             produces = "application/json")
-    public void takeOrder(@PathVariable String id){
+    public ResponseEntity<Order> takeOrder(@PathVariable String id){
         mOrdersDAO.setOrderTaken(id);
+        return new ResponseEntity<Order>(mOrdersDAO.getTakenOrder(), HttpStatus.OK);
     }
 }

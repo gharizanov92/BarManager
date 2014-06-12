@@ -29,12 +29,11 @@ public class OrdersDAO extends BasicDAO<Order, String> {
     }
 
     //public boolean addOrder(Order aNewOrder, String itemID) {
-    public boolean addOrder(String aTable, List<MenuItem> aItems) {
+    public boolean addOrder(List<MenuItem> aItems) {
         try {
             Order order = new Order();
             order.setId(new ObjectId().toString());
             order.setWaiter(mUserInfo.getUserEntity());
-            order.setTable(aTable);
 
             for(MenuItem item : aItems){
                 if(item.getQuantity() != 0){

@@ -9,18 +9,9 @@ import java.util.List;
  */
 public class OrderRequestBody {
 
-    private String mTable;
     private List<MenuItem> mItems;
 
     public OrderRequestBody() {
-    }
-
-    public String getTable() {
-        return mTable;
-    }
-
-    public void setTable(String table) {
-        mTable = table;
     }
 
     public List<MenuItem> getItems() {

@@ -3,8 +3,16 @@
 app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items', '$timeout', "$rootScope",
     function ($scope, resolvedOrders, Orders, Items, $timeout, $rootScope) {
 
+        $scope.hasTakenOrder = true;
         $scope.orders = resolvedOrders;
         $scope.takenOrder = Orders.takenOrder(function(result){
+            console.log(result);
+            console.log("id" in result);
+            if("id" in result){
+                $scope.hasTakenOrder = true;
+            } else {
+                $scope.hasTakenOrder = false;
+            }
             console.log(result);
         });
         $scope.items = Items.all();
@@ -44,7 +52,7 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         $scope.create = function () {
             var orders = [];
 
-            Orders.save({"table":$scope.table, "items":$scope.items},
+            Orders.save({"items":$scope.items},
                 function () {
                     $scope.orderss = Orders.all();
                     $('#saveOrdersModal').modal('hide');
@@ -52,38 +60,23 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
                 });
         };
 
-        $scope.hasTakenOrder = function () {
-            console.log("id" in $scope.takenOrder);
-            return "id" in $scope.takenOrder;
-        /*
-            console.log($scope.takenOrder);
-            console.log($scope.takenOrder.id != "");
-            return $scope.takenOrder != "";*/
-            return true;
-        };
-
         $scope.takeOrder = function (id) {
-            $.post("/rest/orders/take_order/" + id);
+            $scope.hasTakenOrder = true;
+            $.post("/rest/orders/take_order/" + id, function(data){
+                    $scope.takenOrder = data;
+                }).fail(function(){
+                    $scope.hasTakenOrder = false;
+                });
         };
 
         $scope.cancelOrder = function(id){
+            $scope.hasTakenOrder = false;
+            $scope.takenOrder = null;
             $.post("/rest/orders/cancel_order/" + id);
         };
 
         $scope.completeOrder = function(id){
             $.post("/rest/orders/complete_order/" + id);
-        };
-
-        $scope.update = function (id) {
-            $scope.orders = Orders.get({id: id});
-            $('#saveOrdersModal').modal('show');
-        };
-
-        $scope.delete = function (id) {
-            Orders.delete({id: id},
-                function () {
-                    $scope.orderss = Orders.all();
-                });
         };
 
         $scope.clear = function () {
