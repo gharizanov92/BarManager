@@ -79,7 +79,7 @@ public class OrdersDAO extends BasicDAO<Order, String> {
             result = ds.find(Order.class).asList();
 
             for(Order order : result){
-                if(order.getStatus() != Order.STATUS_WAITING){
+                if(order.getStatus() != Order.STATUS_WAITING && order.getStatus() != Order.STATUS_FINISHED){
                     if(order.isExpired()){
                         order.setStatus(Order.STATUS_OVERDUE);
                     }

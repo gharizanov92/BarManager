@@ -142,7 +142,18 @@ public class UserDAO extends BasicDAO<User, String> {
         mOrderDAO.updateOrderStatus(orderID, Order.STATUS_WAITING);
     }
 
+    public void completeOrder(String userID, String orderID) {
+        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(userID);
+        UpdateOperations<User> ops = null;
+        ops = ds.createUpdateOperations(User.class).set("order", "");
+        ds.update(updateQuery, ops);
+
+        mOrderDAO.updateOrderStatus(orderID, Order.STATUS_FINISHED);
+    }
+
     public void removeUser(String id) {
         ds.delete(User.class, id);
     }
+
+
 }

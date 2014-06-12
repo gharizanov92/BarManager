@@ -18,10 +18,10 @@ import java.util.List;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class Order {
 
-    public static final int STATUS_WAITING = 0;
-    public static final int STATUS_TAKEN = 1;
-    public static final int STATUS_FINISHED = 2;
-    public static final int STATUS_OVERDUE = 3;
+    public static final int STATUS_WAITING = 100;
+    public static final int STATUS_TAKEN = 200;
+    public static final int STATUS_FINISHED = 300;
+    public static final int STATUS_OVERDUE = 400;
     private static final int ONE_SECOND = 1000;
     private static final int ONE_MINUTE = 60 * ONE_SECOND;
     private static final int FIVE_MINUTES = 5 * ONE_MINUTE;

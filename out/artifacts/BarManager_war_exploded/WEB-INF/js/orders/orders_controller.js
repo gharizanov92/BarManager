@@ -15,7 +15,32 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
             }
             console.log(result);
         });
-        $scope.items = Items.all();
+
+        $scope.items = Items.all(function(){
+            var decorate = function() {
+                $(".add-quantity").click(function () {
+                    var input = $(this).first().parent().parent().find("input");
+                    var currentVal = parseInt(input.val());
+                    if (isNaN(currentVal)) {
+                        currentVal = 0;
+                    }
+                    input.val(currentVal + 1);
+                });
+
+                $(".remove-quantity").click(function () {
+                    var input = $(this).first().parent().parent().find("input");
+                    var currentVal = parseInt(input.val());
+                    if (isNaN(currentVal)) {
+                        currentVal = 0;
+                    }
+                    if (currentVal - 1 >= 0) {
+                        input.val(currentVal - 1);
+                    }
+                });
+            }
+            setTimeout(decorate, 100);
+
+        });
 
         var formatTime = function(time){
             var minutes = Math.floor(time / 60);
@@ -60,23 +85,28 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
                 });
         };
 
-        $scope.takeOrder = function (id) {
-            $scope.hasTakenOrder = true;
-            $.post("/rest/orders/take_order/" + id, function(data){
-                    $scope.takenOrder = data;
-                }).fail(function(){
-                    $scope.hasTakenOrder = false;
-                });
-        };
-
         $scope.cancelOrder = function(id){
             $scope.hasTakenOrder = false;
             $scope.takenOrder = null;
             $.post("/rest/orders/cancel_order/" + id);
         };
 
+        $scope.takeOrder = function (id) {
+            $scope.hasTakenOrder = true;
+            $.post("/rest/orders/take_order/" + id, function(data){
+                    $scope.takenOrder = data;
+                }).fail(function(){
+                    $scope.hasTakenOrder = false;
+                    $scope.takenOrder = null;
+                    $scope.cancelOrder(id);
+                });
+        };
+
         $scope.completeOrder = function(id){
-            $.post("/rest/orders/complete_order/" + id);
+            $.post("/rest/orders/complete_order/" + id, function(){
+                $scope.hasTakenOrder = false;
+                $scope.takenOrder = null;
+            });
         };
 
         $scope.clear = function () {

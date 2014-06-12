@@ -72,11 +72,19 @@ public class OrdersController {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/complete_order/{id}",
+            method = RequestMethod.POST,
+            produces = "application/json")
+    public ResponseEntity<String> completeOrder(@PathVariable String id){
+        mUserDAO.completeOrder(mUserInfo.getId(), id);
+        return new ResponseEntity<String>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/take_order/{id}",
             method = RequestMethod.POST,
             produces = "application/json")
     public ResponseEntity<Order> takeOrder(@PathVariable String id){
         mOrdersDAO.setOrderTaken(id);
-        return new ResponseEntity<Order>(mOrdersDAO.getTakenOrder(), HttpStatus.OK);
+        return new ResponseEntity<Order>(mOrdersDAO.getTakenOrder(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
