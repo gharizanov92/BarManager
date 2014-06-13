@@ -1,0 +1,2 @@
+db.url = localhost
+db.port = 27017

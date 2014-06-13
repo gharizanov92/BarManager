@@ -11,6 +11,11 @@ import com.mongodb.Mongo;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,6 +28,19 @@ public class OrdersDAO extends BasicDAO<Order, String> {
 
     @Autowired
     private UserDAO mUserDAO;
+
+    private Long getDate(){
+        try {
+            Date now = new Date();
+            DateFormat df = new SimpleDateFormat("yyyy.mm.dd");
+            String formatted = df.format(now);
+            now = df.parse(formatted);
+            return now.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     protected OrdersDAO(Mongo mongo, Morphia morphia, String dbName) {
         super(mongo, morphia, dbName);
@@ -76,12 +94,15 @@ public class OrdersDAO extends BasicDAO<Order, String> {
         return true;
     }
 
-    public List<Order> findAll(){
+    public List<Order> findAll(boolean forTodayOnly){
         List<Order> result = null;
 
         try {
-            result = ds.find(Order.class).asList();
-
+            if(forTodayOnly){
+                result = ds.find(Order.class).field("timeAdded").greaterThan(getDate()).asList();
+            } else {
+                result = ds.find(Order.class).asList();
+            }
             for(Order order : result){
                 if(order.getStatus() != Order.STATUS_WAITING && order.getStatus() != Order.STATUS_FINISHED){
                     if(order.isExpired()){

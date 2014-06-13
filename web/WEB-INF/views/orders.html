@@ -1,9 +1,10 @@
 <div ng-switch="authenticated">
-    <div ng-hide="hasTakenOrder">
-        <div ng-switch-when="true">
+    <div ng-switch-when="true">
+        <div ng-hide="hasTakenOrder">
+
             <h2>Orders</h2>
 
-            <div class="alert alert-danger" ng-show = "outOfTime > 0">
+            <div  class="alert alert-danger" ng-show = "outOfTime > 0 && isAuthorized(userRoles.bartender)">
                 <span ng-show = "outOfTime == 1">Warning, one order is out of time</span>
                 <span ng-show = "outOfTime > 1">Warning, {{outOfTime}} orders are out of time</span>
             </div>

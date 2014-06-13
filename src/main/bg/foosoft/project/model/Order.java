@@ -76,7 +76,7 @@ public class Order {
     public boolean isExpired() {
         Long now = System.currentTimeMillis();
 
-        return mDeadline <= now;
+        return mDeadline <= now && getStatus() == Order.STATUS_WAITING;
     }
 
     public String getId() {

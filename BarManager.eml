@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/out/test/BarManager"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/src/test"/>
+	</contentEntry>
+	<levels>
+		<level name="commons" value="project"/>
+		<level name="jackson" value="project"/>
+		<level name="junit" value="project"/>
+		<level name="logging" value="project"/>
+		<level name="mongo" value="project"/>
+		<level name="servlet" value="project"/>
+		<level name="spring-4.0.5" value="project"/>
+		<level name="javassist-3.16.1" value="project"/>
+		<level name="aspectjrt-1.5.3" value="project"/>
+		<level name="aopalliance-1.0" value="project"/>
+	</levels>
+</component>

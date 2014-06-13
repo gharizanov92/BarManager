@@ -48,7 +48,7 @@ public class OrdersController {
     public @ResponseBody
     List<Order> getAllOrders(){
         List<Order> result = new LinkedList<Order>();
-        for(Order order : mOrdersDAO.findAll()){
+        for(Order order : mOrdersDAO.findAll(true)){
             result.add(order);
         }
 

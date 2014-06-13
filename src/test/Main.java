@@ -1,5 +1,6 @@
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,16 +13,12 @@ public class Main {
         long tStart = System.currentTimeMillis();
 
         Date now = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy.mm.dd");
+        String formatted = df.format(now);
+        now = df.parse(formatted);
         Calendar cal = Calendar.getInstance();
         cal.setTime(now);
-        int month = cal.get(Calendar.MONTH);
-        System.out.println(month);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy:mm:dd:hh:mm:ss");
-        Thread.sleep(1000);
-        Date after = new Date();
-        long tEnd = System.currentTimeMillis();
-        long tDelta = tEnd - tStart;
-        double elapsedSeconds = tDelta / 1000.0;
-        System.out.println(elapsedSeconds);
+        int hour = cal.get(Calendar.HOUR);
+        System.out.println(hour);
     }
 }
