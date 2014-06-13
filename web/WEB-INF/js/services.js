@@ -121,6 +121,12 @@ app.factory('AuthenticationSharedService', ['$rootScope', '$http', 'authService'
                                 $rootScope.account = Session;
                                 authService.loginConfirmed(data);
                             });
+                        },
+                        404: function(){
+                            $rootScope.authenticationError = true;
+                        },
+                        500: function(){
+                            $rootScope.authenticationError = true;
                         }
                     }
                 }).error(function (data, status, headers, config) {

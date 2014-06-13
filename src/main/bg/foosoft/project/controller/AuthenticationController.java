@@ -48,6 +48,19 @@ public class AuthenticationController {
         return new ResponseEntity<User>(mUserInfo.getUserEntity(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/account/change_password",
+            method = RequestMethod.POST,
+            produces = "application/json")
+    public ResponseEntity<String> changePassword(@RequestBody String newPassword) {
+        try{
+            mDao.changePassword(mUserInfo.getId(), newPassword);
+        } catch (Exception ex){
+            return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<String>(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/login",
             method = RequestMethod.POST,
             produces = "application/json")
@@ -66,7 +79,7 @@ public class AuthenticationController {
         } catch (InvalidKeySpecException ex){
             ex.printStackTrace();
         }
-        return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

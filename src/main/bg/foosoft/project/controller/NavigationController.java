@@ -20,13 +20,4 @@ public class NavigationController{
         return "index";
     }
 
-    @RequestMapping(value = "/home")
-    public String home(ModelMap aMap) {
-        return "home";
-    }
-
-    @RequestMapping(value = "/register")
-    public String register(ModelMap aMap){
-        return "register";
-    }
 }

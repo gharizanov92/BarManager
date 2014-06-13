@@ -153,6 +153,15 @@
             }
         }
     },
+    "items": {
+        "price":"Price",
+        "label":"Label",
+        "placeholder":{
+            "label":"Enter the name of the item",
+            "price":"Enter a price in BGN"
+        },
+        "modal-header":"Add or edit an item"
+    },
     "errors": {
         "title": "Error page!",
         "403": "You are not authorized to access the page."

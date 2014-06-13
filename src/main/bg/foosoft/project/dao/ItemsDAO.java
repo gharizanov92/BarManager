@@ -45,10 +45,10 @@ public class ItemsDAO extends BasicDAO<MenuItem, String> {
     }
 
     private boolean updateItem(MenuItem aItem) {
-        Query<User> updateQuery = ds.createQuery(User.class).field("_id").equal(aItem.getId());
-        UpdateOperations<User> ops = null;
+        Query<MenuItem> updateQuery = ds.createQuery(MenuItem.class).field("_id").equal(aItem.getId());
+        UpdateOperations<MenuItem> ops = null;
         try {
-            ops = ds.createUpdateOperations(User.class).set("label",aItem.getLabel())
+            ops = ds.createUpdateOperations(MenuItem.class).set("label",aItem.getLabel())
                     .set("price", aItem.getPrice());
             ds.update(updateQuery, ops);
         } catch (Exception e) {

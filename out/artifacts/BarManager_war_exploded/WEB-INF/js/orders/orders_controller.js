@@ -56,6 +56,12 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         var updateOrders = function() {
             $timeout(function() {
                 Orders.all(function(newOrders){
+
+                    if(newOrders.length != $scope.orders.length){
+                        $scope.orders = newOrders;
+                        return;
+                    }
+
                     for(var i = 0; i < newOrders.length; i++){
                         for(var j = 0; j < $scope.orders.length; j++){
                             if($scope.orders[j].id != newOrders[i].id){
@@ -98,7 +104,6 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
                 }).fail(function(){
                     $scope.hasTakenOrder = false;
                     $scope.takenOrder = null;
-                    $scope.cancelOrder(id);
                 });
         };
 

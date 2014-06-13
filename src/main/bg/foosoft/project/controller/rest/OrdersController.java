@@ -83,8 +83,15 @@ public class OrdersController {
     @RequestMapping(value = "/take_order/{id}",
             method = RequestMethod.POST,
             produces = "application/json")
-    public ResponseEntity<Order> takeOrder(@PathVariable String id){
+    public synchronized ResponseEntity<Order> takeOrder(@PathVariable String id){
+
+        Order order = mOrdersDAO.findOrderByID(id);
+
+        if(order.getStatus() != Order.STATUS_WAITING){
+            return new ResponseEntity<Order>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         mOrdersDAO.setOrderTaken(id);
-        return new ResponseEntity<Order>(mOrdersDAO.getTakenOrder(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<Order>(mOrdersDAO.getTakenOrder(), HttpStatus.OK);
     }
 }
