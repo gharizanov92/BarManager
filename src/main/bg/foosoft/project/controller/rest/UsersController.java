@@ -25,7 +25,6 @@ public class UsersController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<User> registerUser(@RequestBody User aNewUser){
-        //aNewUser.addRole("ROLE_ADMIN");
         mUserDAO.registerUser(aNewUser);
         return new ResponseEntity<User>(HttpStatus.OK);
     }

@@ -39,7 +39,7 @@ public class OrdersController {
             return new ResponseEntity<String>(HttpStatus.OK);
         }
 
-        return new ResponseEntity<String>(HttpStatus.OK);
+        return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @RequestMapping(value = "/all",

@@ -40,12 +40,16 @@ public class OrdersDAO extends BasicDAO<Order, String> {
                     order.addItem(item);
                 }
             }
-            ds.save(order);
+            if(order.getItems().size() > 0){
+                ds.save(order);
+                return true;
+            } else {
+                return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     public List<Order> getAllOrdersForTable(String table){

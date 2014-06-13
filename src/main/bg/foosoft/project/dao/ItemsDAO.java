@@ -11,6 +11,7 @@ import com.google.code.morphia.query.UpdateOperations;
 import com.mongodb.Mongo;
 import org.bson.types.ObjectId;
 
+import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ItemsDAO extends BasicDAO<MenuItem, String> {
         }
 
         try {
-            aNewItem.setId(new ObjectId().toString());
+            //aNewItem.setId(new ObjectId().toString());
             ds.save(aNewItem);
         } catch (Exception e) {
             e.printStackTrace();

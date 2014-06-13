@@ -20,6 +20,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
+                            <label translate="items.id">Item ID</label>
+                            <input type="text" class="form-control" placeholder="{{'items.placeholder.label' | translate}}"
+                                   name = "label" ng-model="item.id" ng-minlength=1 ng-maxlength=50 required>
+                            <div class="error"
+                                 ng-show="form.label.$dirty && form.label.$invalid">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label translate="items.label">Item label</label>
                             <input type="text" class="form-control" placeholder="{{'items.placeholder.label' | translate}}"
                                    name = "label" ng-model="item.label" ng-minlength=1 ng-maxlength=50 required>

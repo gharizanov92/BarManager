@@ -48,19 +48,7 @@ public class Order {
     private Long mDeadline;
 
     public Long getRemainingTime(){
-        /*
-        mExpired = false;
 
-        Long now = System.currentTimeMillis();
-        Long remaining = mDeadline - now;
-        if(remaining <= 0){
-            mExpired = true;
-            return "0";
-        }
-        Long minutes = remaining / ONE_MINUTE;
-        Long seconds = (remaining % ONE_MINUTE) / ONE_SECOND;
-        //String minutes = mins.toString();
-        return minutes.toString() + ":" + seconds.toString();*/
         Long now = System.currentTimeMillis();
         Long remaining = mDeadline - now;
 
@@ -71,7 +59,6 @@ public class Order {
         return remaining / ONE_SECOND;
     }
 
-    //huehuehuehuehuehuehuehue
     public Order() {
         mTimeAdded = System.currentTimeMillis();
         updateDeadline();

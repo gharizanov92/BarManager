@@ -2,6 +2,12 @@
     <div ng-hide="hasTakenOrder">
         <div ng-switch-when="true">
             <h2>Orders</h2>
+
+            <div class="alert alert-danger" ng-show = "outOfTime > 0">
+                <span ng-show = "outOfTime == 1">Warning, one order is out of time</span>
+                <span ng-show = "outOfTime > 1">Warning, {{outOfTime}} orders are out of time</span>
+            </div>
+
             <div ng-show="isAuthorized(userRoles.waiter)">
                 <form name="form" role="form" novalidate
                       class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"

@@ -3,6 +3,7 @@
 app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items', '$timeout', "$rootScope",
     function ($scope, resolvedOrders, Orders, Items, $timeout, $rootScope) {
 
+        $scope.outOfTime = 0;
         $scope.hasTakenOrder = true;
         $scope.orders = resolvedOrders;
         $scope.takenOrder = Orders.takenOrder(function(result){
@@ -62,19 +63,17 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
                         return;
                     }
 
+                    var timeout = 0;
                     for(var i = 0; i < newOrders.length; i++){
-                        for(var j = 0; j < $scope.orders.length; j++){
-                            if($scope.orders[j].id != newOrders[i].id){
-                                $scope.orders = newOrders;
-                                return;
-                            }
-                        }
-                    }
 
-                    for(var i = 0; i < newOrders.length; i++){
-                        $scope.orders[i].remainingTime = newOrders[i].remainingTime;
+                        if(newOrders[i].expired == true){
+                            timeout++;
+                        }
+
+                        $scope.orders[i] = newOrders[i];
                         $scope.orders[i].time = formatTime(newOrders[i].remainingTime);
                     }
+                    $scope.outOfTime = timeout;
                 });
                 updateOrders();
             }, 1000);
@@ -85,9 +84,9 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
             var orders = [];
 
             Orders.save({"items":$scope.items},
-                function () {
+                function (response) {
+                    console.log(response);
                     $scope.orderss = Orders.all();
-                    $('#saveOrdersModal').modal('hide');
                     $scope.clear();
                 });
         };
@@ -116,6 +115,6 @@ app.controller('OrdersController', ['$scope', 'resolvedOrders', 'Orders', 'Items
         };
 
         $scope.clear = function () {
-            $scope.orders = {id: null, sampleTextAttribute: null, sampleDateAttribute: null};
+            $scope.items = Items.all();
         };
     }]);
